@@ -85,7 +85,6 @@ buildDeck();
 // 11. Finally, close the while loop and return "shuffledDeck". You should now be able to run shuffle(buildDeck()) in node and see your shuffled deck of cards.
 
 function shuffle(deck) {
-  debugger;
   let shuffledDeck = deck;
 
   let currentIndex = deck.length - 1; //Add -1 to get index from 0 - 51 on the deck array
@@ -141,7 +140,7 @@ function compare(firstCard, secondCard) {
 //h or l and that they get no points for this round, then return false.
 
 function guess(firstCard, secondCard) {
-  console.log(`${currentCard.rank} ${currentCard.suit}`);
+  //console.log(`${currentCard.rank} ${currentCard.suit}`);
   let input = getInput();
 
   if (input == "h") {
