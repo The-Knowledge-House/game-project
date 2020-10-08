@@ -105,7 +105,7 @@ function shuffle(deck) {
 
 shuffle(buildDeck());
 
-// STEP THREE - Greeting the player
+// ***STEP THREE - Greeting the player *****Missing something about it this step
 // 1. Declare a function called greet()
 // 2. Inside that function, declare a variable called "name" and use "getInput()"
 //to welcome the user to the game, ask for their name, and assign their answer.
@@ -114,16 +114,16 @@ shuffle(buildDeck());
 // 5. Done.
 
 function greet() {
-  let name = getInput();
+  let name = getInput("What is your name?");
   console.log(name);
   return name;
 }
 
 // STEP FOUR - comparing cards
 // 1. declare a function called compare that takes two cards as arguments
-// 2. return the value property of the first card minus the value property of the second card.
+// **2. return the value property of the first card minus the value property of the second card.
 function compare(firstCard, secondCard) {
-  return firstCard - secondCard;
+  return firstCard.value - secondCard.value;
 }
 
 // STEP FIVE - Respond to User Guess
@@ -141,19 +141,19 @@ function compare(firstCard, secondCard) {
 
 function guess(firstCard, secondCard) {
   //console.log(`${currentCard.rank} ${currentCard.suit}`);
-  let input = getInput();
+  let input = getInput(`Will the next card be higher(h) or lower (l)`);
 
   if (input == "h") {
     return compare(firstCard, secondCard) < 0;
   } else if (input == "l") {
     return compare(firstCard, secondCard) > 0;
   } else {
-    alert(`You need to guess either h or l. No points for this round`);
+    console.log(`You need to guess either h or l. No points for this round`);
     return false;
   }
 }
 
-// STEP SIX - Let's play!
+// STEP SIX  ****- Let's play!
 // 1. declare a function called playGame
 // 2. declare a variable called deck (it's okay to reuse -- remember scope!)
 //that takes the result of the shuffle function. Remember that the shuffle function
@@ -188,15 +188,15 @@ function playGame() {
 
     if (guess(currentCard, nextCard) == true) {
       score++;
-      alert(`Congratulations, your score is ${score}`);
+      console.log(`Congratulations, your score is ${score}`);
     } else {
-      alert(`You were wrong, no points were awarded`);
+      console.log(`You were wrong, no points were awarded`);
     }
 
     currentCard = nextCard;
   }
   deck.length === 0
-    ? alert(`You have lost. You're out of cards.`)
+    ? console.log(`You have lost. You're out of cards.`)
     : `Congrats! You have won.`;
 }
 
