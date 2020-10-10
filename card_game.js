@@ -117,7 +117,6 @@ const guess = (cardOne, cardTwo) => {
       console.log('\nATTENTION: Please guess either H or L next time! \nNo points earned this round.\n');
       return false;
   }
-
 }
 
 
