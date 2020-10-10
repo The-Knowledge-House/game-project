@@ -107,8 +107,8 @@ const compare = (cardOne, cardTwo) => cardOne.value - cardTwo.value;
 
 
 const guess = (cardOne, cardTwo) => {
-  console.log(`>>> ${cardOne.rank} of ${(cardTwo.suits)} <<<`)
-  let input = getInput(`\n- Do you think the next card will be higher or lower than current card? \n- For higher, enter 'H' - For lower, enter 'L'`).toLowerCase();
+  console.log(`Card: >>> ${cardOne.rank} of ${(cardTwo.suits)} <<<`)
+  let input = getInput(`\n- Do you think the next card will be higher or lower than this card? \n- For higher, enter 'H' - For lower, enter 'L'`).toLowerCase();
 
   switch (input) {
     case 'h':
