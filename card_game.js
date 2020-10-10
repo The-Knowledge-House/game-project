@@ -88,7 +88,6 @@ const shuffle = deck => {
 
     currentIndex--;
   }
-
   return shuffledDeck;
 }
 
@@ -142,6 +141,5 @@ const playGame = () => {
   deck.length <= 0 ? console.log(`Loss. You've reached the end!`) :
     console.log(`Congratulations ${playerName}, you won!`);
 }
-
 
 playGame();
