@@ -76,8 +76,6 @@ const buildDeck = () => {
   return deck;
 }
 
-buildDeck();
-
 
 const shuffle = deck => {
   let shuffledDeck = deck, currentIndex = deck.length - 1, temporaryValue, randomIndex;
@@ -93,8 +91,6 @@ const shuffle = deck => {
 
   return shuffledDeck;
 }
-
-shuffle(buildDeck());
 
 
 const greet = name => {
