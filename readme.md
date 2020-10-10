@@ -8,16 +8,3 @@
 1. Complete all your work in `card_game.js`.  
 1. Follow the pseudocode in the file to complete the game.  
 1. Test your code with `node card_game.js`.
-
-
-# STEP ONE - Building A Deck.
-
-# STEP TWO - Shuffling your deck
-
-# STEP THREE - Greeting the player
-
-# STEP FOUR - comparing cards
-
-# STEP FIVE - Respond to User Guess
-
-# STEP SIX - Play play!
