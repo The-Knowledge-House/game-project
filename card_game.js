@@ -54,9 +54,9 @@ function shuffle(deck) {
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex) + 1;
-    temporaryValue = shuffledDeck[currentIndex]; // saving the previous value for currentIndex so it's not lost.
-    shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // changing the value of currentIndex to a randomIndex.
-    shuffledDeck[randomIndex] = temporaryValue; // storing original value of currentIndex in randomIndex to shufle the value.
+    temporaryValue = shuffledDeck[currentIndex]; // Saving the previous value for currentIndex so it's not lost.
+    shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // Changing the value of currentIndex to a randomIndex.
+    shuffledDeck[randomIndex] = temporaryValue; // Storing original value of currentIndex in randomIndex to shufle the value.
   }
 }
 shuffle(buildDeck());
@@ -67,12 +67,18 @@ shuffle(buildDeck());
 // 3. Console.log name
 // 4. return name
 // 5. Done.
-function greet() {}
+function greet() {
+  let name = getInput(`Welcome Grey's tavern,\n what might we call you?`);
+  console.log(`Howdy ${name}, please enjoy your stay.`);
+  return name;
+}
 
 // STEP FOUR - comparing cards
 // 1. declare a function called compare that takes two cards as arguments
 // 2. return the value property of the first card minus the value property of the second card.
-function compare() {}
+function compare(firstCrd, secondCrd) {
+  return firstCrd.value - secondCrd.value;
+}
 
 // STEP FIVE - Respond to User Guess
 // 1. declare a function called guess that takes two cards as arguments
@@ -82,7 +88,10 @@ function compare() {}
 // 5. If input equals h, return an expression that checks if the outcome of the compare function (using the same arguments as you used for guess) is a negative number.
 // 6. If input equals l, check and see if it's a positive number.
 // 7. If input doesn't equal h or l, tell the user that they need to guess either h or l and that they get no points for this round, then return false.
-function guess() {}
+function guess(firstCrd, secondCrd) {
+  console.log(`Here are your cards: ${firstCrd.rank} ${secondCrd.rank}`);
+  let input = getInput(``);
+}
 
 // STEP SIX - Let's play!
 // 1. declare a function called playGame
