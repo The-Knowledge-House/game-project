@@ -54,7 +54,7 @@ function shuffle(deck) {
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex) + 1;
-    temporaryValue = shuffledDeck[currentIndex]; // Saving the previous value for currentIndex so it's not lost.
+    temporaryValue = shuffledDeck[currentIndex]; // Saving the previous value to currentIndex so it's not lost.
     shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // Changing the value of currentIndex to a randomIndex.
     shuffledDeck[randomIndex] = temporaryValue; // Storing original value of currentIndex in randomIndex to shufle the value.
   }
