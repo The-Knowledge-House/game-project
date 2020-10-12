@@ -127,7 +127,7 @@ const playGame = () => {
   while (score < 5 && score < deck.length) {
     let nextCard = deck.pop();
 
-    if (guess(currentCard, nextCard) == true) {
+    if (guess(currentCard, nextCard) === true) {
       score++;
       console.log(`\nCongratulations, that was correct! \nScore is now ${score}.\n`)
     } else {
