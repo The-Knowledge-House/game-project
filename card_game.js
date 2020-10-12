@@ -135,13 +135,18 @@ function playGame() {
     if (guess(firstCrd, secondCrd) == true) {
       score++;
       console.log(
-        `Wow, that was a great guess ${playerName}. \n You've earned ${score} point(s).`
+        `Wow, that was a great guess ${playerName}! \n You've earned ${score} point(s).`
       );
     } else {
       console.log(
-        `Better luck next time, no points this round. \n You curently have ${score} point(s).`
+        `Oh wrong guess, no points this round. \n You curently have ${score} point(s).`
       );
     }
     currentCard = nextCard;
   }
+  deck.length === 0
+    ? console.log(`You're at the of the line. \n Better luck next time.`)
+    : console.log(`Congratulations! \n You've hit the Jackpot!`);
 }
+
+playGame();
