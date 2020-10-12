@@ -89,8 +89,26 @@ function compare(firstCrd, secondCrd) {
 // 6. If input equals l, check and see if it's a positive number.
 // 7. If input doesn't equal h or l, tell the user that they need to guess either h or l and that they get no points for this round, then return false.
 function guess(firstCrd, secondCrd) {
-  console.log(`Here are your cards: ${firstCrd.rank} ${secondCrd.rank}`);
-  let input = getInput(``);
+  console.log(
+    `Here are your cards: \n for the first card you have a ${firstCrd.ranks} of ${firstCrd.suits} \n and for the second card you have ${secondCrd.ranks} of ${secondCrd.suits}`
+  );
+  let input = getInput(
+    `So any guesses on your next card? \n Do you think it will be higher (h) or lower (l)? `
+  );
+
+  switch (true) {
+    case input == "h":
+      return compare(firstCrd, secondCrd) < 0;
+      break;
+    case input == "l":
+      return compare(firstCrd, secondCrd) > 0;
+      break;
+    default:
+      console.log(
+        `Sorry, zero points. \n Please make a proper guess next round.`
+      );
+      break;
+  }
 }
 
 // STEP SIX - Let's play!
@@ -105,4 +123,25 @@ function guess(firstCrd, secondCrd) {
 // 9. Close the conditional statement and assign nextCard to currentCard. You may have to write this as the type of variable that's always global...
 // 10. Close the while loop and use a ternary statement that checks if the length of the deck array has reached zero. If it has not, tell the user that they won. If it has reached zero, tell them that they're out of cards and they lost.
 // 11. Write a line of code to execute the playGame function.
-function playGame() {}
+function playGame() {
+  let deck = shuffle(buildDeck());
+  let playerName = greet();
+  let score = 0;
+  currentCard = deck.pop();
+
+  while (score < 5 && score < deck.length) {
+    let nextCard = deck.pop();
+
+    if (guess(firstCrd, secondCrd) == true) {
+      score++;
+      console.log(
+        `Wow, that was a great guess ${playerName}. \n You've earned ${score} point(s).`
+      );
+    } else {
+      console.log(
+        `Better luck next time, no points this round. \n You curently have ${score} point(s).`
+      );
+    }
+    currentCard = nextCard;
+  }
+}
