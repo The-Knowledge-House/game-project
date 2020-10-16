@@ -185,7 +185,7 @@ function playGame(){
   if (deck.length <= 0) {
     console.log(`Unfortunetly you are out of cards and you lost.`);
   } else {
-    console.log(` Congratulations ${playerName}, you won!`);
+    console.log(` Congratulations ${name}, you won!`);
 
   }
 
