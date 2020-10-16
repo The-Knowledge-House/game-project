@@ -88,9 +88,9 @@ function shuffle(deck){
   }
   return shuffledDeck;
 }
-let deck = buildDeck();
-console.log(deck);
-console.log(shuffle(deck));
+// let deck = buildDeck();
+// console.log(deck);
+// console.log(shuffle(deck));
 
 
 // STEP THREE - Greeting the player
