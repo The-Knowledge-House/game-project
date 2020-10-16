@@ -48,16 +48,19 @@ buildDeck();
 // 10. Review the code from steps 7,8, and 9, and leave a comment explaining what you believe those lines of code are doing as they swap assignments of values between them.
 // 11. Finally, close the while loop and return "shuffledDeck". You should now be able to run shuffle(buildDeck()) in node and see your shuffled deck of cards.
 function shuffle(deck) {
+  let shuffledDeck = deck;
   let currentIndex = deck.length - 1;
   let temporaryValue;
   let randomIndex;
 
   while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex) + 1;
+    randomIndex = Math.floor(Math.random() * currentIndex);
     temporaryValue = shuffledDeck[currentIndex]; // Saving the previous value to currentIndex so it's not lost.
     shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // Changing the value of currentIndex to a randomIndex.
     shuffledDeck[randomIndex] = temporaryValue; // Storing original value of currentIndex in randomIndex to shufle the value.
+    currentIndex--;
   }
+  return shuffledDeck;
 }
 shuffle(buildDeck());
 
@@ -90,7 +93,7 @@ function compare(firstCrd, secondCrd) {
 // 7. If input doesn't equal h or l, tell the user that they need to guess either h or l and that they get no points for this round, then return false.
 function guess(firstCrd, secondCrd) {
   console.log(
-    `Here are your cards: \n for the first card you have a ${firstCrd.ranks} of ${firstCrd.suits} \n and for the second card you have ${secondCrd.ranks} of ${secondCrd.suits}`
+    `Here are your cards: \n for the first card you have a ${firstCrd.rank} of ${firstCrd.suit} \n and for the second card you have ${secondCrd.rank} of ${secondCrd.suit}`
   );
   let input = getInput(
     `So any guesses on your next card? \n Do you think it will be higher (h) or lower (l)? `
@@ -107,6 +110,7 @@ function guess(firstCrd, secondCrd) {
       console.log(
         `Sorry, zero points. \n Please make a proper guess next round.`
       );
+      // return false;
       break;
   }
 }
@@ -127,12 +131,12 @@ function playGame() {
   let deck = shuffle(buildDeck());
   let playerName = greet();
   let score = 0;
-  currentCard = deck.pop();
+  let currentCard = deck.pop();
 
   while (score < 5 && score < deck.length) {
     let nextCard = deck.pop();
 
-    if (guess(firstCrd, secondCrd) == true) {
+    if (guess(currentCard, nextCard) == true) {
       score++;
       console.log(
         `Wow, that was a great guess ${playerName}! \n You've earned ${score} point(s).`
