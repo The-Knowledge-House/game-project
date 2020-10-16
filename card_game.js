@@ -1,4 +1,4 @@
-//const readlineSync = require("readline-sync");
+const readlineSync = require("readline-sync");
 
 const { getRawInput } = require("readline-sync");
 
@@ -165,7 +165,7 @@ function guess(cardOne, cardTwo) {
 
 function playGame(){
   let deck = shuffle(buildDeck());
-  let playName = greet();
+  let playerName = greet();
   let score = 0;
   let currentCard = deck.pop();
 
