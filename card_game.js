@@ -136,7 +136,7 @@ function guess(cardOne, cardTwo) {
       return compare(cardOne, cardTwo) > 0;
       break;
     default:
-      console.log(`Please ONLY guess either h or l. You will not recieve any points this round :(`);
+      console.log(`Please ONLY guess either h or l. You will not recieve any points this round`);
       return false;
   }
 }
