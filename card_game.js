@@ -22,6 +22,24 @@ function getInput(prompt) {
 // HINT: The result of step 6 is that each card will be an object inside of the deck array, for example [{suit: "diamonds", rank: "A", value: 0}, {suit: "diamonds", rank: "2", value: 1},...{etc}]. For example, if we wanted to organize the players and teams of the NBA with index numbers, we could write: nba.push({player: players[i], team: teams[n], index: i})
 // 7. After your loops, return deck, which should now return an array full of card objects if you were to run buildDeck().
 
+function buildDeck() {
+  let suits = ["spades", "hearts", "clovers", "diamonds"];
+  let ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+  let deck = [];
+
+  for (let i = 0; i < ranks.length; i++) {
+    for (let j = 0; j < suits.length; j++) {
+      deck.push({suits: suits[j], ranks: ranks[i], value: i });
+    }
+  }
+
+  console.log(deck);
+      
+
+  
+
+}
+
 // STEP TWO - Shuffling your deck
 // 1. use a function declaration to create a function called shuffle that takes deck as an argument.
 // 2. Inside this function create a variable called "shuffledDeck" that takes deck as its value.
