@@ -55,7 +55,7 @@ function shuffle(deck) {
   return shuffledDeck;
 }
   
-console.log(shuffle(buildDeck()));
+// console.log(shuffle(buildDeck()));
   
 function greet() {
   let name = getInput("Welcome to the game! What is your name?");
