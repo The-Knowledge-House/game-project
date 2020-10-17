@@ -32,79 +32,49 @@ function buildDeck() {
       deck.push({ suits: suits[j], ranks: ranks[i], value: i });
     }
   }
-  return deck;
 }
 
 buildDeck();
 
 function shuffle(deck) {
   let shuffledDeck = deck
-  let currentIndex = deck.length -1;
+  let currentIndex = deck.length;
   let temporaryValue;
   let randomIndex;
 
   while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * (currentIndex)); // randomizing the index of all the cards in the deck (ie uo to the nuber 52 (number of cards in the deck));
-    temporaryValue = shuffledDeck[currentIndex]; // card value of the card chosen, due to the randomized index that was given in the randomIndex variable above.
-    shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; //takes the card index selected from randomized card deck shuffling, and assigns it as the current card that you have. 
-    shuffledDeck[randomIndex] = temporaryValue; //gives your chosen card the value of your randonmly selected card, after shuffling. 
-
-    currentIndex --; //dashes mean subtract from currentIndex one index value
+    randomIndex = Math.floor(Math.random() * (currentIndex));
+    temporaryValue = shuffledDeck[currentIndex];
+    shuffledDeck[currentIndex] = shuffledDeck[randomIndex];
+    
   }
-
-  return shuffledDeck;
 }
   
-console.log(shuffle(buildDeck()));
   
-function greet() {
-  let name = getInput("Welcome to the game! What is your name?");
-  console.log(name);
-  return name;
+  
+// STEP TWO - Shuffling your deck
+// 1. use a function declaration to create a function called shuffle that takes deck as an argument.
+// 2. Inside this function create a variable called "shuffledDeck" that takes deck as its value.
+// 3. Using "let" declare three new variables: currentIndex, whos value should equal the length of the deck array, and two more: temporaryValue and randomIndex, each of which should currently have no value assigned.
+// 4. Create a while loop whos condition is that "currentIndex" does not equal 0, so that we stop looping once we've gone through all 52 cards.
+// 5. Inside the while loop, use the javascript Math.methods to generate a random integer between 0 and "currentIndex"
+// 6. Inside the while loop, decrement current index by 1. (should be after step 9)
+// 7. Inside the while loop, assign "temporaryValue" with "shuffledDeck" (which is an array) to the [currentIndex].
+// 8. Still inside, assign "shuffledDeck[currentIndex]" a value of shuffledDeck to the [randomIndex]
+// 9. Still inside, assign "shuffledDeck[randomIndex]" a value of "temporaryValue".  (currentIndex //i--;)
+// 10. Review the code from steps 7,8, and 9, and leave a comment explaining what you believe those lines of code are doing as they swap assignments of values between them.
+// 11. Finally, close the while loop and return "shuffledDeck". You should now be able to run shuffle(buildDeck()) in node and see your shuffled deck of cards.
 
-}
+// STEP THREE - Greeting the player
+// 1. Declare a function called greet()
+// 2. Inside that function, declare a variable called "name" and use "getInput()" to welcome the user to the game, ask for their name, and assign their answer.
+// 3. Console.log name
+// 4. return name
+// 5. Done.
 
-function compare(card1, card2) {
-  return card1.value - card2.value;
-
-} 
-
-function guess(card1, card2) {
-  console.log(`Card: ${card1.rank} of ${(card2.suits)}`)
-  let input = getInput(`\n- Do you think the next card will be higher or lower than this card? \n- For higher, enter 'H' - For lower, enter 'L'`).toLowerCase();
-
-  switch (input) {
-    case 'h':
-      return compare(cardOne, cardTwo) < 0;
-      break;
-    case 'l':
-      return compare(cardOne, cardTwo) > 0;
-      break;
-    default:
-      console.log('\nATTENTION: Please guess either H or L next time! \nNo points earned this round.\n');
-  }
-}
-
-
-const playGame = () => {
-  let deck = shuffle(buildDeck()),
-    playerName = greet(),
-    score = 0,
-    currentCard = deck.pop();
-
-  while (score < 5 && score < deck.length) {
-    let nextCard = deck.pop();
-
-    if (guess(currentCard, nextCard) === true) {
-      score++;
-      console.log(`\nCongratulations, that was correct! \nScore is now ${score}.\n`)
-    } else {
-      console.log(`\nIncorrect. No points earned.\nScore remains ${score}.\n`)
-    }
-    currentCard = nextCard;
-  }
-}
-
+// STEP FOUR - comparing cards
+// 1. declare a function called compare that takes two cards as arguments
+// 2. return the value property of the first card minus the value property of the second card.
 
 // STEP FIVE - Respond to User Guess
 // 1. declare a function called guess that takes two cards as arguments
