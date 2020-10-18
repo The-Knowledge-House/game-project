@@ -24,17 +24,17 @@ function getInput(prompt) {
 
 function buildDeck() {
   let suits = [`spades`, `hearts`, `diamonds`, `clubs`];
-  let ranks = [`Ace`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, ` 10`, `Jack`, `Queen`, ` King`];
+  let ranks = [`Ace`, 2, 3, 4, 5, 6, 7, 8, 9,  10, `Jack`, `Queen`, `King`];
   let deck = [];
   for (let x = 0; x < ranks.length; x++){
     for (let z = 0; z < suits.length; z++){
-      deck.push({ rank: ranks[x], suit: suits[z], index: [x]});
+      deck.push({ suits: suits[z], rank: ranks[x], value: x });
 
     }
   }
   return deck;
 }
-buildDeck();
+
 
 
 // STEP TWO - Shuffling your deck
@@ -56,15 +56,14 @@ function shuffle(deck) {
   let temporaryValue;
   let randomIndex;
   while (currentIndex > 0) {
-    let randomIndex = Math.floor(Math.random() * currentIndex); // randomIndex will call on any random interger (random card) from currentIndex which is the length of the deck (52).
-    temporaryValue = shuffledDeck[currentIndex]; // temporaryValue in this line is equalling to the value of the ranks suits and index of the orginial stacked deck of "cards". starting off with first array.
-    shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // taking the original deck of "cards" and shuffiling. changing the placement of ranks suits and index (objects) inside the array (shuffledDeck).
-    shuffledDeck[randomIndex] = temporaryValue; // temporaryValue now equals to the shuffled deck. tempValue now holds the array that has a random ranks suits and index.
+     randomIndex = Math.floor(Math.random() * currentIndex); // randomIndex will call on any random interger (random card) from currentIndex which is the length of the deck (52).
+      temporaryValue = shuffledDeck[currentIndex]; // temporaryValue in this line is equalling to the value of the ranks suits and index of the orginial stacked deck of "cards". starting off with first array.
+      shuffledDeck[currentIndex] = shuffledDeck[randomIndex]; // taking the original deck of "cards" and shuffiling. changing the placement of ranks suits and index (objects) inside the array (shuffledDeck).
+      shuffledDeck[randomIndex] = temporaryValue; // temporaryValue now equals to the shuffled deck. tempValue now holds the array that has a random ranks suits and index.
 
-    currentIndex--; // taking the deck.length and counting down but because of the while loop it wont hit zero. 
+      currentIndex--; // taking the deck.length and counting down but because of the while loop it wont hit zero. 
     
-      
-  }
+    }
   return shuffledDeck;
 }
 shuffle(buildDeck());
@@ -86,7 +85,9 @@ function greet() {
 // STEP FOUR - comparing cards
 // 1. declare a function called compare that takes two cards as arguments
 // 2. return the value property of the first card minus the value property of the second card.
-let  compare = (cardOne, cardTwo) => cardOne.value - cardTwo.value;
+function compare(cardOne, cardTwo){
+  return cardOne.value - cardTwo.value;
+}
 
 // STEP FIVE - Respond to User Guess
 // 1. declare a function called guess that takes two cards as arguments
@@ -97,8 +98,8 @@ let  compare = (cardOne, cardTwo) => cardOne.value - cardTwo.value;
 // 6. If input equals l, check and see if it's a positive number.
 // 7. If input doesn't equal h or l, tell the user that they need to guess either h or l and that they get no points for this round, then return false.
 function guess(cardOne, cardTwo) {
-  console.log(`${cardOne.rank} {cardTwo.suit}`);
-  let input = getInput(`will the next card  be higher (h) or lower (l) than their current?`);
+  console.log(`${cardOne.rank}, ${cardTwo.suit}`);
+  let input = getInput(`will the next card  be higher (h) or lower (l) than your current?`);
   switch (input) {
     case `h`:
       return compare(cardOne, cardTwo) < 0;
@@ -110,6 +111,7 @@ function guess(cardOne, cardTwo) {
       console.log(`need to guess either h or l and that you get no points for this round.`);
     
   }
+
 }
   
 // STEP SIX - Let's play!
@@ -124,7 +126,7 @@ function guess(cardOne, cardTwo) {
 // 9. Close the conditional statement and assign nextCard to currentCard. You may have to write this as the type of variable that's always global...
 // 10. Close the while loop and use a ternary statement that checks if the length of the deck array has reached zero. If it has not, tell the user that they won. If it has reached zero, tell them that they're out of cards and they lost.
 // 11. Write a line of code to execute the playGame function.
- 
+
   function playGame() {
     let deck = shuffle(buildDeck());
     let playerName = greet();
@@ -136,23 +138,24 @@ function guess(cardOne, cardTwo) {
         score++;
         console.log(`congrats your score is ${score}`);
       } else {
-        console.log(`You recive no points, your score is ${score}.`);
+        console.log(`You recive no points, your score is ${score}`);
       }
       currentCard = nextCard;
       
      
     
     }
-    if (deck.length <= 0) {
+   
+    if (deck.length === 0) {
       console.log(` you have lost !`);
-    } else {
+    }else{
       console.log(` you have won ${playerName}`);
-      
     }
   }
-    
-  
-  
-  
-playGame();
+  playGame();
+
+
+
+
+
   
