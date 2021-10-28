@@ -123,22 +123,22 @@ playGame = () => {
 	let currentCard = deck.pop();
 	// 6. create a while loop whos conditions are that score is less than five AND less than the amount of items still in the deck array.
 	while (score < 5 && score < deck.length) {
+		// 7. Inside the while loop, use an array method on deck to remove the last object and assign that value to a variable named nextCard.
 		let nextCard = deck.pop();
 		if (guess(currentCard, nextCard)) {
+			// 8. Inside the while loop, create a conditional statement. If the outcome of guess is true, increment the score by 1, congratulate the user,
 			score += 1;
 			console.log(`Congratulations ${playerName}, your score is ${score}`);
 		} else {
+			//and tell them their score.If it's false, tell them they were wrong and got no points.
 			console.log(`You FAIL and get no points`);
 		}
+		// 9. Close the conditional statement and assign nextCard to currentCard. You may have to write this as the type of variable that's always global...
 		currentCard = nextCard;
 	}
+	// 10. Close the while loop and use a ternary statement that checks if the length of the deck array has reached zero. If it has not, tell the user that they won.
+	//If it has reached zero, tell them that they're out of cards and they lost.
 	deck.length !== 0 ? console.log("You've won") : console.log("You've Lost");
 };
-playGame();
-// 7. Inside the while loop, use an array method on deck to remove the last object and assign that value to a variable named nextCard.
-// 8. Inside the while loop, create a conditional statement. If the outcome of guess is true, increment the score by 1, congratulate the user,
-//and tell them their score.If it's false, tell them they were wrong and got no points.
-// 9. Close the conditional statement and assign nextCard to currentCard. You may have to write this as the type of variable that's always global...
-// 10. Close the while loop and use a ternary statement that checks if the length of the deck array has reached zero. If it has not, tell the user that they won.
-//If it has reached zero, tell them that they're out of cards and they lost.
 // 11. Write a line of code to execute the playGame function.
+playGame();
